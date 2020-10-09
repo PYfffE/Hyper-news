@@ -11,10 +11,19 @@ from django.conf import settings
 with open(settings.NEWS_JSON_PATH, 'r') as json_file:
     json_db = json.loads(json_file.read())
 
+dates = sorted({i['created'][0:10] for i in json_db})
+list.reverse(dates)
+
+parsed_news = [[i['created'][0:10], i['link'], i['title']] for i in json_db]
+
 
 class NewsView(View):
+
     def get(self, request):
-        return HttpResponse("Hyper News")
+        return render(request, 'news/news.html', {
+            'dates': dates,
+            'news': parsed_news,
+        })
 
 
 class LinkView(View):
@@ -39,4 +48,4 @@ class LinkView(View):
 
 class MainView(View):
     def get(self, request):
-        return HttpResponse("Coming soon")
+        return render(request, 'news/index.html')

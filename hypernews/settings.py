@@ -15,8 +15,8 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-#NEWS_JSON_PATH = 'news.json'  # You can choose any path you want
-NEWS_JSON_PATH = os.path.join(os.path.dirname(BASE_DIR), 'news.json')
+NEWS_JSON_PATH = 'news.json'  # You can choose any path you want
+#NEWS_JSON_PATH = os.path.join(os.path.dirname(BASE_DIR), 'news.json')
 NEWS_JSON_PATH = os.environ.get('NEWS_JSON_PATH') or NEWS_JSON_PATH  # DO NOT MODIFY THIS LINE
 
 
