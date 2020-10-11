@@ -1,14 +1,31 @@
-<h2>Hyper news</h2>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'css/base.css' %}">
+        <meta charset="UTF-8">
+        <title>Hyper News</title>
+    </head>
+    <body>
+        <form method="get">
+            <p>Search:</p>
+            <input type="text" name="q">
+            <br />
+            <input type="submit">
+        </form>
+        <h2>Hyper news</h2>
 
-{% for date in dates %}
-    <h4>{{ date }}</h4>
+        {% for date in dates %}
+            <h4>{{ date }}</h4>
 
-    <ul>
-        {% for one_news in news %}
-        {% if one_news.0 == date %}
-            <li><a target="_blank" href="/news/{{ one_news.1 }}/">{{ one_news.2 }}</a></li>
-        {% endif %}
+            <ul>
+                {% for one_news in news %}
+                {% if one_news.0 == date %}
+                    <li><a target="_blank" href="/news/{{ one_news.1 }}/">{{ one_news.2 }}</a></li>
+                {% endif %}
+                {% endfor %}
+            </ul>
         {% endfor %}
-    </ul>
-{% endfor %}
-<a target="_blank" href="/news/create/">create</a>
+        <a target="_blank" href="/news/create/">create</a>
+    </body>
+</html>
